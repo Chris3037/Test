@@ -28,15 +28,15 @@ namespace Test
             Print("What function do you want to test?");
             Thread.Sleep(500);
 
-            Print("RandomFunction, ListManipulation, Hangman, Lambda, Lambda2, Beep, TextColor, Print, End");
+            Print("RandomFunction, ListManipulation, Hangman, Lambda, Lambda2, Beep, TextColor, Print, ArtText, Mario, WindowSize, End");
 
             input = Console.ReadLine().ToLower();
-            if (input == "randomfunction")
+            if (input == "randomfunction" || input == "random")
             {
                 Console.Clear();
                 RandomFunction();
             }
-            else if (input == "listmanipulation")
+            else if (input == "listmanipulation" || input == "list")
             {
                 Console.Clear();
                 ListManipulation();
@@ -46,12 +46,12 @@ namespace Test
                 Console.Clear();
                 Hangman();
             }
-            else if (input == "lambda")
+            else if (input == "lambda" || input == "l1")
             {
                 Console.Clear();
                 Lambda();
             }
-            else if (input == "lambda2")
+            else if (input == "lambda2" || input == "l2")
             {
                 Console.Clear();
                 Lambda2();
@@ -71,6 +71,21 @@ namespace Test
                 Console.Clear();
                 Print("This text should be printing correctly.");
                 End();
+            }
+            else if (input == "arttext" || input == "art")
+            {
+                Console.Clear();
+                ArtText();
+            }
+            else if (input == "mario")
+            {
+                Console.Clear();
+                Mario();
+            }
+            else if (input == "windowsize" || input == "window")
+            {
+                Console.Clear();
+                WindowSize();
             }
             else if (input == "end" || input == "")
             {
@@ -116,16 +131,34 @@ namespace Test
             myStrings.Add("qwerty");
             var display = "";
 
-            foreach (var s in myStrings)
+            foreach (var item in myStrings)
             {
-                display = display + s + ", ";
+                display = display + item + ", ";
             }
 
-            foreach (int s in myInts)
+            foreach (int item in myInts)
             {
-                display = display + s + ", ";
+                display = display + item + ", ";
             }
-            Console.WriteLine(display);
+
+
+            Console.WriteLine("myStrings Alphabetically:");
+            foreach (var item in myStrings.OrderBy(x => x))
+            {
+                Console.WriteLine(item);
+            }
+
+
+            Console.WriteLine("Longest to shortest:");
+            var reversedProducts = myStrings.OrderByDescending(x => x.Length);
+
+
+            Console.WriteLine("Ball Products:");
+            var ballProducts = myStrings.Where(x => x.Contains("a") || x.Contains("A")); 
+
+
+            Console.WriteLine();
+            Console.Write(display);
             End();
         }
 
@@ -308,6 +341,65 @@ namespace Test
             Console.WriteLine();
         }
 
+        //ArtText Function
+        static void ArtText()
+        {
+            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(@"
+                                                                           
+         █████╗ ██████╗ ████████╗████████╗███████╗██╗  ██╗████████╗        
+        ██╔══██╗██╔══██╗╚══██╔══╝╚══██╔══╝██╔════╝╚██╗██╔╝╚══██╔══╝        
+        ███████║██████╔╝   ██║      ██║   █████╗   ╚███╔╝    ██║           
+        ██╔══██║██╔══██╗   ██║      ██║   ██╔══╝   ██╔██╗    ██║           
+        ██║  ██║██║  ██║   ██║      ██║   ███████╗██╔╝ ██╗   ██║           
+        ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚══════╝╚═╝  ╚═╝   ╚═╝           
+                                                                           
+");
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine(@"
+                                                                           
+         █████  ██████  ████████ ████████ ███████ ██   ██ ████████         
+        ██   ██ ██   ██    ██       ██    ██       ██ ██     ██            
+        ███████ ██████     ██       ██    █████     ███      ██            
+        ██   ██ ██   ██    ██       ██    ██       ██ ██     ██            
+        ██   ██ ██   ██    ██       ██    ███████ ██   ██    ██            
+                                                                           
+");                                                      
+                                                                   
+            Console.ResetColor();
+            End();
+        }
+
+        //Mario
+        static void Mario()
+        {
+                                                                      
+Console.WriteLine("                                                ██████████    ██████  ");
+Console.WriteLine("                                              ██████████████████████  ");
+Console.WriteLine("                                              ██████████████  ██████  ");
+Console.WriteLine("                                            ████████████████████████  ");
+Console.WriteLine("                                            ████████████████████████  ");
+Console.WriteLine("                                            ██████████████████████    ");
+Console.WriteLine("                                                ██████████████████    ");
+Console.WriteLine("                                    ████████████████████████████    ██");
+Console.WriteLine("                                    ██████████████████████████    ████");
+Console.WriteLine("                                      ██      ████████████████████████");
+Console.WriteLine("                                                ██████████████████████");
+Console.WriteLine("                                            ██████████████████████████");
+Console.WriteLine("                                          ██████████████████          ");
+Console.WriteLine("                                          ████                        ");
+            End();
+        }
+
+        //WindowSize
+        static void WindowSize()
+        {
+            Console.SetWindowSize(100, 30);
+            End();
+        }
+
         //End Function
         static void End()
         {
@@ -316,12 +408,12 @@ namespace Test
             Print("Do you want to try another function?");
             input = Console.ReadLine().ToLower();
 
-            if (input == "yes")
+            if (input == "yes" || input == "y")
             {
                 Console.Clear();
                 Welcome();
             }
-            else if (input == "no" || input == "")
+            else if (input == "no" || input == "n" || input == "")
             {
                 Console.WriteLine();
                 Print("Press any key to continue");
