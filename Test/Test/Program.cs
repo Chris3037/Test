@@ -151,13 +151,24 @@ namespace Test
 
             Console.WriteLine("Longest to shortest:");
             var reversedProducts = myStrings.OrderByDescending(x => x.Length);
+            foreach (var item in reversedProducts)
+            {
+                Console.Write(item);
+            }
 
+            Console.WriteLine();
 
             Console.WriteLine("Ball Products:");
-            var ballProducts = myStrings.Where(x => x.Contains("a") || x.Contains("A")); 
+            //"Ball" || "ball"
+            var ballProducts = myStrings.Where(x => x.Contains("a") || x.Contains("A"));
+            foreach (var item in ballProducts)
+            {
+                Console.Write(item);
+            }
 
 
             Console.WriteLine();
+            Console.WriteLine("Display");
             Console.Write(display);
             End();
         }
@@ -366,8 +377,8 @@ namespace Test
         ██   ██ ██   ██    ██       ██    ██       ██ ██     ██            
         ██   ██ ██   ██    ██       ██    ███████ ██   ██    ██            
                                                                            
-");                                                      
-                                                                   
+");
+
             Console.ResetColor();
             End();
         }
@@ -375,28 +386,59 @@ namespace Test
         //Mario
         static void Mario()
         {
-                                                                      
-Console.WriteLine("                                                ██████████    ██████  ");
-Console.WriteLine("                                              ██████████████████████  ");
-Console.WriteLine("                                              ██████████████  ██████  ");
-Console.WriteLine("                                            ████████████████████████  ");
-Console.WriteLine("                                            ████████████████████████  ");
-Console.WriteLine("                                            ██████████████████████    ");
-Console.WriteLine("                                                ██████████████████    ");
-Console.WriteLine("                                    ████████████████████████████    ██");
-Console.WriteLine("                                    ██████████████████████████    ████");
-Console.WriteLine("                                      ██      ████████████████████████");
-Console.WriteLine("                                                ██████████████████████");
-Console.WriteLine("                                            ██████████████████████████");
-Console.WriteLine("                                          ██████████████████          ");
-Console.WriteLine("                                          ████                        ");
+
+            Console.WriteLine("                                                ██████████    ██████  ");
+            Console.WriteLine("                                              ██████████████████████  ");
+            Console.WriteLine("                                              ██████████████  ██████  ");
+            Console.WriteLine("                                            ████████████████████████  ");
+            Console.WriteLine("                                            ████████████████████████  ");
+            Console.WriteLine("                                            ██████████████████████    ");
+            Console.WriteLine("                                                ██████████████████    ");
+            Console.WriteLine("                                    ████████████████████████████    ██");
+            Console.WriteLine("                                    ██████████████████████████    ████");
+            Console.WriteLine("                                      ██      ████████████████████████");
+            Console.WriteLine("                                                ██████████████████████");
+            Console.WriteLine("                                            ██████████████████████████");
+            Console.WriteLine("                                          ██████████████████          ");
+            Console.WriteLine("                                          ████                        ");
             End();
         }
 
         //WindowSize
         static void WindowSize()
         {
-            Console.SetWindowSize(100, 30);
+            var width = "";
+            var height = "";
+            Print("What dimensions do you want Width?");
+            Print("(Max is 200)");
+            width = Console.ReadLine();
+            if (Convert.ToInt32(width) > 200)
+            {
+                Console.Clear();
+                Print("Enter a number within the the max width");
+                Console.WriteLine();
+                WindowSize();
+            }
+            Console.Clear();
+            if (width == "default")
+            {
+                Console.SetWindowSize(80, 25);
+            }
+            else
+            {
+                Print("What dimensions do you want Height?");
+                Print("(Max is 69)");
+                height = Console.ReadLine();
+                Console.Clear();
+                Console.SetWindowSize(Convert.ToInt32(width), Convert.ToInt32(height));
+                if (Convert.ToInt32(height) > 69)
+                {
+                    Console.Clear();
+                    Print("Enter a number within the the max height");
+                    Console.WriteLine();
+                    WindowSize();
+                }
+            }
             End();
         }
 
