@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +16,22 @@ namespace Test
         //Main Function
         static void Main(string[] args)
         {
+            videoGame battlefield = new videoGame("Battlefield", "Code Here", "First-Person Shooter");
+            battlefield.Play();
+            //Adding info to properties
+            battlefield.Awesomeness = 11;
+            battlefield.Rating = "M";
+            //Modifying existing property value
+            battlefield.Code = "New Code";
+            battlefield.Play();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+
             Print("Hello " + name);
             Thread.Sleep(500);
             Welcome();
