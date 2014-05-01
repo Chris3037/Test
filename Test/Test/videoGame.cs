@@ -8,6 +8,7 @@ namespace Test
 {
     class videoGame
     {
+        //Properties
         public string Code { get; set; }
         public string Rating { get; set; }
         public int Awesomeness { get; set; }
@@ -15,7 +16,7 @@ namespace Test
         public string Title { get; set; }
 
         /// <summary>
-        /// This is a constructor
+        /// This is a constructor (It has the same name as the class!!!)
         /// </summary>
         /// <param name="title">Name of game</param>
         /// <param name="code">Code to make the game</param>
@@ -28,7 +29,7 @@ namespace Test
         }
 
         /// <summary>
-        /// Runs the code to play the game.
+        /// This is a method. It's just a fuction but in an object. Runs the code to play the game.
         /// </summary>
         public void Play()
         {

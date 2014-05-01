@@ -16,23 +16,9 @@ namespace Test
         //Main Function
         static void Main(string[] args)
         {
-            videoGame battlefield = new videoGame("Battlefield", "Code Here", "First-Person Shooter");
-            battlefield.Play();
-            //Adding info to properties
-            battlefield.Awesomeness = 11;
-            battlefield.Rating = "M";
-            //Modifying existing property value
-            battlefield.Code = "New Code";
-            battlefield.Play();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-
-
-
+            Console.ForegroundColor = ConsoleColor.Green;
             Print("Hello " + name);
+            Console.ResetColor();
             Thread.Sleep(500);
             Welcome();
         }
@@ -43,77 +29,32 @@ namespace Test
             Print("What function do you want to test?");
             Thread.Sleep(500);
 
-            Print("RandomFunction, ListManipulation, Hangman, Lambda, Lambda2, Beep, TextColor, Print, ArtText, Mario, WindowSize, End");
+            Print("RandomFunction, ListManipulation, Hangman, Lambda, Lambda2, Beep, TextColor, Print, ArtText, Mario, WindowSize, Objects, End");
 
             input = Console.ReadLine().ToLower();
-            if (input == "randomfunction" || input == "random")
-            {
-                Console.Clear();
-                RandomFunction();
-            }
-            else if (input == "listmanipulation" || input == "list")
-            {
-                Console.Clear();
-                ListManipulation();
-            }
-            else if (input == "hangman")
-            {
-                Console.Clear();
-                Hangman();
-            }
-            else if (input == "lambda" || input == "l1")
-            {
-                Console.Clear();
-                Lambda();
-            }
-            else if (input == "lambda2" || input == "l2")
-            {
-                Console.Clear();
-                Lambda2();
-            }
-            else if (input == "beep")
-            {
-                Console.Clear();
-                Beep();
-            }
-            else if (input == "textcolor")
-            {
-                Console.Clear();
-                TextColor();
-            }
-            else if (input == "print")
-            {
-                Console.Clear();
-                Print("This text should be printing correctly.");
-                End();
-            }
-            else if (input == "arttext" || input == "art")
-            {
-                Console.Clear();
-                ArtText();
-            }
-            else if (input == "mario")
-            {
-                Console.Clear();
-                Mario();
-            }
-            else if (input == "windowsize" || input == "window")
-            {
-                Console.Clear();
-                WindowSize();
-            }
-            else if (input == "end" || input == "")
-            {
-                Console.Clear();
-                End();
-            }
-            else
-            {
-                Console.Clear();
-                Print("I can't find that function.");
-                Console.WriteLine();
-                Welcome();
 
+            switch (input)
+            {
+                case "randomfunction":
+                case "random": Console.Clear(); RandomFunction(); break;
+                case "listmanipulation":
+                case "list": Console.Clear(); ListManipulation(); break;
+                case "hangman": Console.Clear(); Hangman(); break;
+                case "lambda": Console.Clear(); Lambda(); break;
+                case "lambda2": Console.Clear(); Lambda2(); break;
+                case "beep": Console.Clear(); Beep(); break;
+                case "text":
+                case "textcolor": Console.Clear(); TextColor(); break;
+                case "print": Console.Clear(); Print("This text should be printing correctly."); End(); break;
+                case "arttext":
+                case "art": Console.Clear(); ArtText(); break;
+                case "mario": Console.Clear(); Mario(); break;
+                case "windowsize":
+                case "window": Console.Clear(); WindowSize(); break;
+                case "end":
+                case "": Console.Clear(); End(); break;
+                case "objects": Console.Clear(); Objects(); break;
+                default: Console.Clear(); Print("I can't find that function."); Console.WriteLine(); Welcome(); break;
             }
         }
 
@@ -151,9 +92,13 @@ namespace Test
                 display = display + item + ", ";
             }
 
+            foreach (string item in myStrings)
+            {
+                Console.WriteLine(item);
+            }
             foreach (int item in myInts)
             {
-                display = display + item + ", ";
+                Console.WriteLine(item);
             }
 
 
@@ -185,6 +130,7 @@ namespace Test
             Console.WriteLine();
             Console.WriteLine("Display");
             Console.Write(display);
+            Console.WriteLine();
             End();
         }
 
@@ -195,48 +141,9 @@ namespace Test
         /// <param name="args">Arguments for my function</param>
         static void Hangman()
         {
-            //this is the word they need to guess
-            var theWord = "apples";
-            //these are the letters that they've guessed
-            var guessed = new List<string>() { "a", "b", "c", "p", "e" };
-            //this is the masked word that will be displayed to the user
-            var maskedWord = "";
-            //Loop over the word they need to guess
-            for (var i = 0; i < theWord.Length; i++)
-            {
-                //this is the current letter of the word they need to guess
-                var currentLetter = theWord[i].ToString();
-                //this is a boolean flag to determine if they got a letter correct
-                var gotOne = false;
-                //this loops over the letters they have guessed
-                for (var j = 0; j < guessed.Count(); j++)
-                {
-                    //this is the letter in the list of letters they've guessed
-                    var currentGuessed = guessed[j];
-                    //checking to see if the current letter of the word they need to guess
-                    // is equal to a letter they have guessed
-                    if (currentLetter == currentGuessed)
-                    {
-                        //got a letter!
-                        gotOne = true;
-                    }
-                }
-                //they got a letter!
-                if (gotOne)
-                {
-                    //add the letter they got to the masked word
-                    maskedWord += currentLetter + " ";
-                }
-                else
-                {
-                    //havent guessed it yet, make an underscore.
-                    maskedWord += "_ ";
-                }
-            }
-
-            Console.WriteLine(maskedWord);
+            string[] randomArray = { };
+            HangMan.Program.Main(randomArray);
             End();
-
         }
 
         //Lambda Functions
@@ -424,36 +331,64 @@ namespace Test
         {
             var width = "";
             var height = "";
+            
             Print("What dimensions do you want Width?");
             Print("(Max is 200)");
             width = Console.ReadLine();
-            if (Convert.ToInt32(width) > 200)
+            Console.Clear();
+            
+            if (width == "default")
             {
+                width = "80";
+                height = "25";
+                Console.SetWindowSize(65, 25);
+            }
+            else if (Convert.ToInt32(width) > 200)
+            {
+                width = "65";
+                height = "25";
                 Console.Clear();
                 Print("Enter a number within the the max width");
                 Console.WriteLine();
                 WindowSize();
             }
-            Console.Clear();
-            if (width == "default")
-            {
-                Console.SetWindowSize(80, 25);
-            }
             else
             {
-                Print("What dimensions do you want Height?");
-                Print("(Max is 69)");
-                height = Console.ReadLine();
-                Console.Clear();
-                Console.SetWindowSize(Convert.ToInt32(width), Convert.ToInt32(height));
-                if (Convert.ToInt32(height) > 69)
-                {
-                    Console.Clear();
-                    Print("Enter a number within the the max height");
-                    Console.WriteLine();
-                    WindowSize();
-                }
+            Print("What dimensions do you want Height?");
+            Print("(Max is 65)");
+            height = Console.ReadLine();
+            Console.Clear();
             }
+            if (Convert.ToInt32(height) > 65)
+            {
+                width = "65";
+                height = "25";
+                Console.Clear();
+                Print("Enter a number within the the max height");
+                Console.WriteLine();
+                WindowSize();
+            }
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Print(width + "x" + height);
+            Console.ResetColor();
+            Console.SetWindowSize(Convert.ToInt32(width), Convert.ToInt32(height));
+
+
+            End();
+        }
+
+        //Objects Function
+        static void Objects()
+        {
+            videoGame battlefield = new videoGame("Battlefield", "Code for Video Game here", "First-Person Shooter");
+            battlefield.Play();
+            //Adding info to properties
+            battlefield.Awesomeness = 11;
+            battlefield.Rating = "M";
+            //Modifying existing property value
+            battlefield.Code = "New Video Game Code";
+            battlefield.Play();
             End();
         }
 
