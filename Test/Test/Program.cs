@@ -142,7 +142,6 @@ namespace Test
         static void Hangman()
         {
             string[] randomArray = { };
-            HangMan.Program.Main(randomArray);
             End();
         }
 

@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace HangMan
 {
-    static class Program
+    class Program
     {
 
         //Pulbic Variable
@@ -22,7 +22,7 @@ namespace HangMan
         static int random = randomTemp.Next(0, wordArray.Length);
         static string word = wordArray[random];
 
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             Print("Please enter your name");
             userName = Console.ReadLine();
